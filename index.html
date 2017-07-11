@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="weatherApp.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,700i,900i|Open+Sans:300|Source+Sans+Pro:900" rel="stylesheet">
+<!--        <script src=weather2.js></script>-->
+    </head>
+    <body>
+        <div id="Container">
+            <div id="Current" class="col">
+                <p id="currText" class="heading">
+                    Current  
+                </p>
+                <div id="taglineDiv">
+                    <p id="Tagline">
+                        What's your weather?
+                    </p>
+                    <p id="tagDescr">
+                        Type in your City, State and hit GO.
+                    </p>
+                </div>
+            </div>
+            <div id="Weather" class="col">
+                <p id="weathText" class="heading">
+                    Forecast
+                </p>
+                
+                <form id="formID">
+                    <input type="text" id="userInput" name="location" placeholder="City, State" onkeypress="return keyPress(event);"> <!-- add support for enter key -->
+<!--                    <input type="submit" value="Go" onclick="main()" />-->
+                    <button type="button" onclick="getZip()" id="zipButton">Go</button>
+                </form>
+            </div>
+            
+            <div class="footer">
+                <div id="currentFooter" class="col2">
+                        <img src="purple.png" />
+                    <p>    
+                        Icons by Yorlmar Campos from the Noun Project
+                    </p>
+                </div>
+            
+                <div id="forecastFooter" class="col2">
+                    <p>
+                        Design by Tara Parker-Essig<br>
+                        Code by Disha Bendre
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script src="weather2.js"></script>
+    </body>
+</html>
