@@ -151,7 +151,6 @@ function displayLeftCol(city, state, currentTemp, celTemp) {
     currentDiv.appendChild(moveForm);
     moveForm.classList.add("formClass");
         
-    console.log(document.getElementById("Current").childElementCount);
     if (firstLocation) { // if first location is true, do this
         firstLocation = false;
         
@@ -196,7 +195,6 @@ function displayLeftCol(city, state, currentTemp, celTemp) {
 
 function displayRightCol(dayArray) {
     "use strict";
-    console.log(dayArray);
     var daydiv, dayDate, dayText, highTemp, lowTemp, textNode, containerDiv, imgDiv, i;
     if (firstDayArray) {
         containerDiv = document.createElement("div");
@@ -260,7 +258,6 @@ function callbackFunction(jsonData) {
     "use strict";
     var weather, city, state, currentTemp, celTemp, i, code, date, month, day, tempHigh, tempLow, text, textImage;
     weather = jsonData.query.results.channel;
-    console.log(weather);
     
     //parse weather data
     city = weather.location.city; // on left div
