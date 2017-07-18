@@ -124,9 +124,9 @@ function getImage(code) {
 }
 
 function keyPress(e) {
+    "use strict";
     e = e || window.event;
-    if (e.keyCode == 13) {
-        
+    if (e.keyCode === 13) {
         document.getElementById("zipButton").click();
         return false;
     }
@@ -134,17 +134,18 @@ function keyPress(e) {
 }
 
 function displayLeftCol(city, state, currentTemp, celTemp) {
-    var locationPara, textNode, farenP, tempText, tempText2, celP;
+    "use strict";
+    var locationPara, textNode, farenP, tempText, tempText2, celP, removeTagDiv, moveForm, currentDiv, tempFP, tempCP;
     
     // if taglineDiv has not been removed already, remove it.
     if (document.getElementById("taglineDiv")) {
-        var removeTagDiv = document.getElementById("taglineDiv");
+        removeTagDiv = document.getElementById("taglineDiv");
         removeTagDiv.parentElement.removeChild(removeTagDiv);
-    } 
+    }
     
     //move input field to left side
-    var moveForm = document.getElementById("formID");
-    var currentDiv = document.getElementById("Current");
+    moveForm = document.getElementById("formID");
+    currentDiv = document.getElementById("Current");
     moveForm.parentElement.removeChild(moveForm);
     currentDiv.appendChild(moveForm);
     moveForm.classList.add("formClass");
