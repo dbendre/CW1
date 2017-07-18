@@ -80,37 +80,41 @@ var weekDays = {
 };
 
 function getImage(code) {
-    var imgWeather = document.createElement("img");
+    "use strict";
+    var imgWeather, src;
+    imgWeather = document.createElement("img");
     imgWeather.id = "weatherIcon";
-    var src = "";
+    src = "";
     
-    if (code == 0 || code == 2) {
+    code = parseInt(code, 10); // convert string code to int for comparision check
+    
+    if (code === 0 || code === 2) {
         src = "./icons/hurricanetornado.png";
-    } else if (code == 1) {
+    } else if (code === 1) {
         src = "./icons/tropicalStorm.png";
-    } else if (code == 3 || code == 4 || code == 37 || code == 38 || code == 39 || code == 45 || code == 47) {
+    } else if (code === 3 || code === 4 || code === 37 || code === 38 || code === 39 || code === 45 || code === 47) {
         src = "./icons/cloud-and-thunder.png";
-    } else if (code == 5 || code == 6 || code == 7 || code == 14 || code == 42 || code == 46) {
+    } else if (code === 5 || code === 6 || code === 7 || code === 14 || code === 42 || code === 46) {
         src = "./icons/rainsnow.png";
-    } else if (code == 8 || code == 9 || code == 10 || code == 11 || code == 12 || code == 40) {
+    } else if (code === 8 || code === 9 || code === 10 || code === 11 || code === 12 || code === 40) {
         src = "./icons/rain.png";
-    } else if (code == 13 || code == 14 || code == 15 || code == 16 || code == 41 || code == 43) {
+    } else if (code === 13 || code === 14 || code === 15 || code === 16 || code === 41 || code === 43) {
         src = "./icons/snowflake.png";
-    } else if (code == 17 || code == 18 || code == 35) {
+    } else if (code === 17 || code === 18 || code === 35) {
         src = "./icons/hail.png";
-    } else if (code == 19 || code == 20 || code == 21 || code == 22 || code == 23) {
+    } else if (code === 19 || code === 20 || code === 21 || code === 22 || code === 23) {
         src = ".icons/fog.png";
-    } else if (code == 24) {
+    } else if (code === 24) {
         src = "./icons/wind.png";
-    } else if (code == 25) {
+    } else if (code === 25) {
         src = "./icons/cold.png";
-    } else if (code == 26 || code == 27 || code == 28 || code == 29 || code == 30 || code == 44) {
+    } else if (code === 26 || code === 27 || code === 28 || code === 29 || code === 30 || code === 44) {
         src = "./icons/cloudy.png";
-    } else if (code == 31 || code == 32 || code == 33 || code == 34) {
+    } else if (code === 31 || code === 32 || code === 33 || code === 34) {
         src = "./icons/sunny.png";
-    } else if (code == 36) {
+    } else if (code === 36) {
         src = "./icons/hot.png";
-    } else if (code == 3200) {
+    } else if (code === 3200) {
         src = "./icons/error.png";
     }
     
