@@ -49,15 +49,17 @@ function Day(code, date, month, day, tempHigh, tempLow, text, textImage) {
 } // information for each day
 
 function convertTemp(currentTemp) {
-    celTemp = (currentTemp - 32) * 5/9;
+    "use strict";
+    var celTemp;
+    celTemp = (currentTemp - 32) * 5 / 9;
     return celTemp;
 }
 
 var months = {
-    "Jan" : "January", 
-    "Feb" : "February", 
-    "Apr" : "April", 
-    "May" : "May", 
+    "Jan" : "January",
+    "Feb" : "February",
+    "Apr" : "April",
+    "May" : "May",
     "Jun" : "June",
     "Jul" : "July",
     "Aug" : "August",
