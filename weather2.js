@@ -1,3 +1,4 @@
+/*jslint plusplus: true*/
 var firstLocation = true;
 var firstDayArray = true;
 var firstCSS = true;
@@ -194,16 +195,17 @@ function displayLeftCol(city, state, currentTemp, celTemp) {
 }
 
 function displayRightCol(dayArray) {
+    "use strict";
     console.log(dayArray);
-    var daydiv, dayDate, dayText, highTemp, lowTemp, textNode, containerDiv, imgDiv;
+    var daydiv, dayDate, dayText, highTemp, lowTemp, textNode, containerDiv, imgDiv, i;
     if (firstDayArray) {
         containerDiv = document.createElement("div");
         containerDiv.id = "containerDiv";
         document.getElementById("Weather").appendChild(containerDiv);
 
-        for (var i = 0; i < 7; i++) {
+        for (i = 0; i < 7; i++) {
             daydiv = document.createElement("div");
-            daydiv.id = "day"+i;
+            daydiv.id = "day" + i;
             daydiv.classList.add("dayClass");
 
             //day information
@@ -232,30 +234,32 @@ function displayRightCol(dayArray) {
             lowTemp.id = "lowTemp";
             textNode = document.createTextNode("Low: " + dayArray[i].tempLow + "\xB0" + "F");
             lowTemp.appendChild(textNode);
-            daydiv.appendChild(lowTemp);  
+            daydiv.appendChild(lowTemp);
             
             daydiv.appendChild(getImage(dayArray[i].code));
             
-            document.getElementById("containerDiv").appendChild(daydiv); 
+            document.getElementById("containerDiv").appendChild(daydiv);
         }
         firstDayArray = false;
 
-    } else { 
-        for (var i = 0; i < 7; ++i){
-            document.getElementById("day"+i).firstElementChild.innerHTML = dayArray[i].day + ", " + dayArray[i].month + " " + dayArray[i].date;
-            document.getElementById("day"+i).children[1].innerHTML = dayArray[i].text;
-            document.getElementById("day"+i).children[2].innerHTML = "High: " + dayArray[i].tempHigh + "\xB0" + "F";
-            document.getElementById("day"+i).children[3].innerHTML = "Low: " + dayArray[i].tempLow + "\xB0" + "F";
+    } else {
+        for (i = 0; i < 7; ++i) {
+            document.getElementById("day" + i).firstElementChild.innerHTML = dayArray[i].day + ", " + dayArray[i].month + " " + dayArray[i].date;
+            document.getElementById("day" + i).children[1].innerHTML = dayArray[i].text;
+            document.getElementById("day" + i).children[2].innerHTML = "High: " + dayArray[i].tempHigh + "\xB0" + "F";
+            document.getElementById("day" + i).children[3].innerHTML = "Low: " + dayArray[i].tempLow + "\xB0" + "F";
             
-            document.getElementById("day"+i).removeChild(document.getElementById("day"+i).children[4]);
-            document.getElementById("day"+i).appendChild(getImage(dayArray[i].code));
+            document.getElementById("day" + i).removeChild(document.getElementById("day" + i).children[4]);
+            document.getElementById("day" + i).appendChild(getImage(dayArray[i].code));
         }
-    } 
+    }
 }
 
 
 function callbackFunction(jsonData) {
-    var weather = jsonData.query.results.channel;
+    "use strict";
+    var weather, city, state, currentTemp, celTemp, i, code, date, month, day, tempHigh, tempLow, text, textImage;
+    weather = jsonData.query.results.channel;
     console.log(weather);
     
     //parse weather data
@@ -267,8 +271,8 @@ function callbackFunction(jsonData) {
     displayLeftCol(city, state, currentTemp, celTemp);
     
     // populate day array
-    for (var i = 0; i < 7; i++) {
-        code = weather.item.forecast[i].code; 
+    for (i = 0; i < 7; i++) {
+        code = weather.item.forecast[i].code;
         date = weather.item.forecast[i].date.split(" ")[0]; //get date number
         month = months[weather.item.forecast[i].date.split(" ")[1]];
         day = weekDays[weather.item.forecast[i].day];
@@ -278,7 +282,7 @@ function callbackFunction(jsonData) {
         textImage = getImage(code);
         
         dayArray[i] = new Day(code, date, month, day, tempHigh, tempLow, text, textImage); // display on right div
-    }   
+    }
     
     displayRightCol(dayArray);
 }
