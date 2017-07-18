@@ -3,18 +3,20 @@ var firstDayArray = true;
 var firstCSS = true;
 
 //create weather data object for each day
-var dayArray = new Array(7) // array for 7 days
+var dayArray = new Array(7); // array for 7 days
 
 function getZip() {
-    var script = document.createElement("script");
-    var getInput = document.getElementById("userInput").value; // get input
+    "use strict";
+    var script, getInput, city, state;
+    script = document.createElement("script");
+    getInput = document.getElementById("userInput").value; // get input
    
     
     //parse input
     getInput = getInput.split(", ");
-    var city = getInput[0];
-    var state = getInput[1];
-    script.src = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='"+city+", "+state+"')&format=json&callback=callbackFunction";
+    city = getInput[0];
+    state = getInput[1];
+    script.src = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + ", " + state + "')&format=json&callback=callbackFunction";
     document.head.appendChild(script);
     
     if (document.getElementById("containerDiv")) { // fix scrolling issue when entering new location
@@ -27,7 +29,7 @@ function getZip() {
         document.getElementById("formID").style.top = "30vw";
         document.getElementById("Weather").style.backgroundColor = "#fff";
         document.getElementById("weathText").style.backgroundColor = "#fff";
-        document.getElementById("weathText").style.color = "#f89a1f"; 
+        document.getElementById("weathText").style.color = "#f89a1f";
         document.getElementById("forecastFooter").style.backgroundColor = "#fff";
         document.getElementById("forecastFooter").style.color = "#f89a1f";
     }
@@ -35,6 +37,7 @@ function getZip() {
 }
 
 function Day(code, date, month, day, tempHigh, tempLow, text, textImage) {
+    "use strict";
     this.code = code;
     this.date = date;
     this.month = month;
