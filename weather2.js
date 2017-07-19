@@ -1,7 +1,11 @@
 /*jslint plusplus: true */
 /*eslint-env browser*/
 /*eslint no-unused-vars: 0*/
+/*eslint no-console: 0*/
 //define rules above to satisfy linter
+
+//current complexity: 61
+//new complexity: 11
 
 var firstLocation = true; // bool indicating first location search
 var firstDayArray = true; // bool indicating data from first location search
@@ -83,6 +87,57 @@ var weekDays = {
     "Sun" : "Sunday"
 }; // object mapping day abbreviation to long word
 
+var imageMap = {
+    0: "./icons/hurricanetornado.png",
+    2: "./icons/hurricanetornado.png",
+    1: "./icons/tropicalStorm.png",
+    3: "./icons/cloud-and-thunder.png",
+    4: "./icons/cloud-and-thunder.png",
+    37: "./icons/cloud-and-thunder.png",
+    38: "./icons/cloud-and-thunder.png",
+    39: "./icons/cloud-and-thunder.png",
+    45: "./icons/cloud-and-thunder.png",
+    47: "./icons/cloud-and-thunder.png",
+    5: "./icons/rainsnow.png",
+    6: "./icons/rainsnow.png",
+    7: "./icons/rainsnow.png",
+    14: "./icons/rainsnow.png",
+    42: "./icons/rainsnow.png",
+    46: "./icons/rainsnow.png",
+    8: "./icons/rain.png",
+    9: "./icons/rain.png",
+    10: "./icons/rain.png",
+    12: "./icons/rain.png",
+    40: "./icons/rain.png",
+    13: "./icons/snowflake.png",
+    15: "./icons/snowflake.png",
+    16: "./icons/snowflake.png",
+    41: "./icons/snowflake.png",
+    43: "./icons/snowflake.png",
+    17: "./icons/hail.png",
+    18: "./icons/hail.png",
+    35: "./icons/hail.png",
+    19: ".icons/fog.png",
+    20: ".icons/fog.png",
+    21: ".icons/fog.png",
+    22: ".icons/fog.png",
+    23: ".icons/fog.png",
+    24: "./icons/wind.png",
+    25: "./icons/cold.png",
+    26: "./icons/cloudy.png",
+    27: "./icons/cloudy.png",
+    28: "./icons/cloudy.png",
+    29: "./icons/cloudy.png",
+    30: "./icons/cloudy.png",
+    44: "./icons/cloudy.png",
+    31: "./icons/sunny.png",
+    32: "./icons/sunny.png",
+    33: "./icons/sunny.png",
+    34: "./icons/sunny.png",
+    36: "./icons/hot.png",
+    3200: "./icons/error.png"
+}; // object mapping image to corresponding code
+
 function getImage(code) {
     "use strict";
     var imgWeather, src;
@@ -91,36 +146,7 @@ function getImage(code) {
     src = "";
     
     code = parseInt(code, 10); // convert string code to int for comparision check
-    
-    if (code === 0 || code === 2) {
-        src = "./icons/hurricanetornado.png";
-    } else if (code === 1) {
-        src = "./icons/tropicalStorm.png";
-    } else if (code === 3 || code === 4 || code === 37 || code === 38 || code === 39 || code === 45 || code === 47) {
-        src = "./icons/cloud-and-thunder.png";
-    } else if (code === 5 || code === 6 || code === 7 || code === 14 || code === 42 || code === 46) {
-        src = "./icons/rainsnow.png";
-    } else if (code === 8 || code === 9 || code === 10 || code === 11 || code === 12 || code === 40) {
-        src = "./icons/rain.png";
-    } else if (code === 13 || code === 14 || code === 15 || code === 16 || code === 41 || code === 43) {
-        src = "./icons/snowflake.png";
-    } else if (code === 17 || code === 18 || code === 35) {
-        src = "./icons/hail.png";
-    } else if (code === 19 || code === 20 || code === 21 || code === 22 || code === 23) {
-        src = ".icons/fog.png";
-    } else if (code === 24) {
-        src = "./icons/wind.png";
-    } else if (code === 25) {
-        src = "./icons/cold.png";
-    } else if (code === 26 || code === 27 || code === 28 || code === 29 || code === 30 || code === 44) {
-        src = "./icons/cloudy.png";
-    } else if (code === 31 || code === 32 || code === 33 || code === 34) {
-        src = "./icons/sunny.png";
-    } else if (code === 36) {
-        src = "./icons/hot.png";
-    } else if (code === 3200) {
-        src = "./icons/error.png";
-    }
+    src = imageMap[code];    
     
     imgWeather.setAttribute("src", src);
     return imgWeather;
