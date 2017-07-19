@@ -9,28 +9,20 @@ html, body {
     width: 50%;
 }
 
-.heading {
-/*    position: fixed;*/
-}
-
 #Current {
     float: left;
-/*    background: #ee962b;*/
     background: #f89a1f;
     height: 100vh;
     position: fixed;
 }
 
 #Weather {
-    /* originally make this orange*/
     float: right;
-/*    background: #fff; change this after*/
     background: #f89a1f;
     height: 100vh;
 }
 
 #currText {
-/*    z-index: 1*/
     top: 0vw;
     position: fixed;
     width: 45%;
@@ -40,7 +32,6 @@ html, body {
     text-align: right;
     padding-right: 5vw;
     border-bottom-style: solid;
-/*    font-family: 'Lato', sans-serif;*/
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     font-size: 5.7vw;
@@ -49,8 +40,6 @@ html, body {
 }
 
 #weathText {
-/*    top: 1vw;*/
-    /*originally white, chage to orange after*/
     top: 0vw;
     position: fixed;
     width: 100%;
@@ -61,11 +50,8 @@ html, body {
     padding-left: 5vw;
     border-bottom-style: solid;
     font-family: 'Open Sans', sans-serif;
-/*    font-family: 'Lato', sans-serif;*/
     font-weight: 300;
     font-size: 5.7vw;
-/*    color: #f89a1f; change this on the second one*/
-/*    background-color: #fff;*/
     color: #fff;
     background-color: #f89a1f;
     z-index: 2;
@@ -76,8 +62,7 @@ html, body {
     margin: 0 5vw 0 0;
     text-align: right;
     font-family: 'Open Sans', sans-serif;
-    color: #fff;
-    
+    color: #fff;    
 }
 
 #Tagline {
@@ -95,10 +80,7 @@ html, body {
 .footer {
     position: fixed;
     bottom: 0px;
-/*    margin-bottom: 1px;*/
-/*    font-family: 'Lato', sans-serif;*/
     width: 100%;
-/*    text-align: left;*/
 }
 
 #currentFooter img {
@@ -111,39 +93,30 @@ html, body {
     height: 20%;
 }
 
-
 #currentFooter {
-/*    position: fixed;*/
     float: left;
     width: 50%;
     font-family: 'Open Sans', sans-serif;
-/*    font-family: 'Lato', sans-serif;*/
     background-color: #f89a1f;
     border-top-style: solid;
     border-top-color: #fff;
     color: #fff;
     font-size: 1vw;
     padding: 0;
-    margin: 0;
-/*    border: 0;*/
-    
+    margin: 0;    
 }
 
 #currentFooter p {
     clear: right;
     text-align: right;
     margin-right: 5vw;
-    
 }
 
 #forecastFooter {
-    /*originally orange background; change to white after*/
     float: right;
-/*    background: #fff;*/
     width: 50%;
     text-align: left;
     border-top-style: solid;
-/*    color: #f89a1f;*/
     background: #f89a1f;
     color: #fff;
     font-size: 1vw;
@@ -157,24 +130,19 @@ html, body {
 #forecastFooter p {
     margin-left: 5vw;
     font-family: 'Open Sans', sans-serif;
-/*    font-family: 'Lato', sans-serif;*/
     margin-top: 1vw;
     padding: 0;
     border: 0;
 }
 
-
 form {
     font-family: 'Open Sans', sans-serif;
-/*    font-family: 'Lato', sans-serif;*/
     margin-left: 5vw;
     margin-top: 17vw;
     text-align: left;
     position: relative;
     top: 15%;
     transform: translateY(-50%);
-/*    font-family: 'Open Sans', sans-serif;*/
-/*    color: #000;*/
 }
 
 input[type="text"] {
@@ -188,7 +156,6 @@ input[type="text"] {
 
 input[placeholder] {
     font-family: 'Open Sans', sans-serif;
-/*    font-family: 'Lato', sans-serif;*/
     font-size: 2vw;
 }
 
@@ -198,7 +165,6 @@ input[type="submit"] {
     margin-bottom: 1vw;
     border-radius: 5px;
     font-family: 'Open Sans', sans-serif;
-/*    font-family: 'Lato', sans-serif;*/
     background-color: #EEF0F0;
     width: 5%;
     height: 10%;
@@ -213,7 +179,6 @@ input[type="submit"] {
 #weatherIcon {
     max-height: 20%;
     max-width: 20%; 
-/*    float: right;*/
     position: relative;
     left: 18vw;
     bottom: 8vw;
@@ -288,23 +253,15 @@ input[type="submit"] {
 
 #containerDiv {
     font-family: 'Lato', sans-serif;
-/*    bottom: 1000px;*/
     top: 10.5vw;
     margin-bottom: 4vw;
     position: absolute;
-    
-/*    height: 720px; */
-/*    FIX THE SCROLLING ISSUE*/
-/*    z-index: -1;*/
 }
 
 .dayClass {
-/*    font-family: 'Source Sans', sans-serif;*/
     font-size: 1.5vw;
     margin-left: 6vw;
-/*    margin-bottom: 2vw;*/
-    font-weight: 700;
-    
+    font-weight: 700;    
 }
 
 #dayDate {

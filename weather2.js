@@ -1,10 +1,13 @@
-/*jslint plusplus: true*/
-var firstLocation = true;
-var firstDayArray = true;
-var firstCSS = true;
+/*jslint plusplus: true */
+/*eslint-env browser*/
+/*eslint no-unused-vars: 0*/
+//define rules above to satisfy linter
 
-//create weather data object for each day
-var dayArray = new Array(7); // array for 7 days
+var firstLocation = true; // bool indicating first location search
+var firstDayArray = true; // bool indicating data from first location search
+var firstCSS = true; // bool to apply css for first browser load
+
+var dayArray = new Array(7); //create weather data object to contain 7 days
 
 function getZip() {
     "use strict";
@@ -21,12 +24,12 @@ function getZip() {
     document.head.appendChild(script);
     
     if (document.getElementById("containerDiv")) { // fix scrolling issue when entering new location
-        document.body.scrollTop = 0; // For Chrome, Safari and Opera 
-        document.documentElement.scrollTop = 0; // For IE and Firefox
+        document.body.scrollTop = 0; // for Chrome, Safari and Opera 
+        document.documentElement.scrollTop = 0; // for IE and Firefox
     }
     
-    if (firstCSS) {
-        firstCSS = false;
+    if (firstCSS) { // apply specific css for very first location search
+        firstCSS = false; // change to false for next location searches
         document.getElementById("formID").style.top = "30vw";
         document.getElementById("Weather").style.backgroundColor = "#fff";
         document.getElementById("weathText").style.backgroundColor = "#fff";
@@ -35,7 +38,7 @@ function getZip() {
         document.getElementById("forecastFooter").style.color = "#f89a1f";
     }
     
-}
+} // query API based on location
 
 function Day(code, date, month, day, tempHigh, tempLow, text, textImage) {
     "use strict";
@@ -54,7 +57,7 @@ function convertTemp(currentTemp) {
     var celTemp;
     celTemp = (currentTemp - 32) * 5 / 9;
     return celTemp;
-}
+} // convert from farenheit to celsius
 
 var months = {
     "Jan" : "January",
@@ -68,7 +71,7 @@ var months = {
     "Oct" : "October",
     "Nov" : "November",
     "Dec" : "December"
-};
+}; // object mapping month abbreviation to long word 
 
 var weekDays = {
     "Mon" : "Monday",
@@ -78,7 +81,7 @@ var weekDays = {
     "Fri" : "Friday",
     "Sat" : "Saturday",
     "Sun" : "Sunday"
-};
+}; // object mapping day abbreviation to long word
 
 function getImage(code) {
     "use strict";
@@ -121,8 +124,7 @@ function getImage(code) {
     
     imgWeather.setAttribute("src", src);
     return imgWeather;
-    
-}
+} // get correct weather icon corresponding to code
 
 function keyPress(e) {
     "use strict";
@@ -132,7 +134,7 @@ function keyPress(e) {
         return false;
     }
     return true;
-}
+} // triggers getZip() on 'enter' key
 
 function displayLeftCol(city, state, currentTemp, celTemp) {
     "use strict";
@@ -151,57 +153,61 @@ function displayLeftCol(city, state, currentTemp, celTemp) {
     currentDiv.appendChild(moveForm);
     moveForm.classList.add("formClass");
         
-    if (firstLocation) { // if first location is true, do this
+    if (firstLocation) { // if first location is true, create corresponding elements to dispaly weather data
         firstLocation = false;
         
         //location
-        locationPara = document.createElement("p"); //paragraph node
+        locationPara = document.createElement("p");
         locationPara.id = "locationID";
         textNode = document.createTextNode(city + ", " + state);
         locationPara.appendChild(textNode);
         currentDiv.appendChild(locationPara);
         
-        //farenheit temperature
+        //fahrenheit temperature
         tempFP = document.createElement("p");
         tempFP.id = "tempFar";
         textNode = document.createTextNode(currentTemp + "\xB0");
         tempFP.appendChild(textNode);
         currentDiv.appendChild(tempFP);
         
+        //celsius temperature
         tempCP = document.createElement("p");
         tempCP.id = "tempCel";
         textNode = document.createTextNode(celTemp + "\xB0");
         tempCP.appendChild(textNode);
         currentDiv.appendChild(tempCP);
         
+        //fahrenheit label 
         farenP = document.createElement("p");
         farenP.id = "farenText";
         tempText = document.createTextNode("Fahrenheit");
         farenP.appendChild(tempText);
         currentDiv.appendChild(farenP);
         
+        //celsius label
         celP = document.createElement("p");
         celP.id = "celText";
         tempText2 = document.createTextNode("Celsius");
         celP.appendChild(tempText2);
         currentDiv.appendChild(celP);
         
-    } else { // not first location:
+    } else { // not first location
         document.getElementById("locationID").innerHTML = city + ", " + state;
         document.getElementById("tempFar").innerHTML = currentTemp + "\xB0";
         document.getElementById("tempCel").innerHTML = celTemp + "\xB0";
     }
-}
+} // display all data on left column on page
 
 function displayRightCol(dayArray) {
     "use strict";
-    var daydiv, dayDate, dayText, highTemp, lowTemp, textNode, containerDiv, imgDiv, i;
-    if (firstDayArray) {
+    var daydiv, dayDate, dayText, highTemp, lowTemp, textNode, containerDiv, i;
+    if (firstDayArray) { // create all elements if this is the first location search
         containerDiv = document.createElement("div");
         containerDiv.id = "containerDiv";
         document.getElementById("Weather").appendChild(containerDiv);
 
         for (i = 0; i < 7; i++) {
+            //create div for each day
             daydiv = document.createElement("div");
             daydiv.id = "day" + i;
             daydiv.classList.add("dayClass");
@@ -240,7 +246,7 @@ function displayRightCol(dayArray) {
         }
         firstDayArray = false;
 
-    } else {
+    } else { // if not the first search, bind data to existing elements
         for (i = 0; i < 7; ++i) {
             document.getElementById("day" + i).firstElementChild.innerHTML = dayArray[i].day + ", " + dayArray[i].month + " " + dayArray[i].date;
             document.getElementById("day" + i).children[1].innerHTML = dayArray[i].text;
@@ -251,7 +257,7 @@ function displayRightCol(dayArray) {
             document.getElementById("day" + i).appendChild(getImage(dayArray[i].code));
         }
     }
-}
+} // display data on right column of page
 
 
 function callbackFunction(jsonData) {
@@ -282,4 +288,4 @@ function callbackFunction(jsonData) {
     }
     
     displayRightCol(dayArray);
-}
+} // callbackFunction used in getZip()
