@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="weatherApp.css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,700,900|Open+Sans:300|Source+Sans+Pro:900" rel="stylesheet">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     </head>
     <body>
         <div id="Container">
             <div id="Current" class="col">
                 <p id="currText" class="heading">
-                    Current  
+                    Current
                 </p>
                 <div id="taglineDiv">
                     <p id="Tagline">
@@ -24,21 +25,21 @@
                 <p id="weathText" class="heading">
                     Forecast
                 </p>
-                
+
                 <form id="formID">
-                    <input type="text" id="userInput" name="location" placeholder="City, State" onkeypress="return keyPress(event);"> 
+                    <input type="text" id="userInput" name="location" placeholder="City, State" onkeypress="return keyPress(event);">
                     <button type="button" onclick="getZip()" id="zipButton">Go</button>
                 </form>
             </div>
-            
+
             <div class="footer">
                 <div id="currentFooter" class="col2">
                         <img src="purple.png" />
-                    <p>    
+                    <p>
                         Icons by Yorlmar Campos from the Noun Project
                     </p>
                 </div>
-            
+
                 <div id="forecastFooter" class="col2">
                     <p>
                         Design by Tara Parker-Essig<br>
